@@ -1,24 +1,23 @@
 ﻿
-using NAudio.Wave;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 namespace SnakeGame
 {
-    internal class Snake
+    public class Snake
     {
         private List<int> x, y;
         private static int length;
         private int speed;
         private Direction direction;
 
-        internal Snake(int startX, int startY, int startSpeed)
+        public Snake(int startX, int startY, int startSpeed)
         {
-            x = new List<int>() { startX };
-            y = new List<int>() { startY };
-            length = 1;
+            x = new List<int>() { startX, startX - 1, startX - 2, startX - 3 };
+            y = new List<int>() { startY, startY - 1, startY - 2, startY - 3 };
+            length = 4;
             speed = startSpeed;
         }
+
+        public Snake() { }
+
 
         internal void MoveSnake(ConsoleKeyInfo key, char[,] map)
         {
@@ -49,10 +48,6 @@ namespace SnakeGame
 
             else if (map[nextY, nextX] == '*')
             {
-                var audio = new AudioFileReader(@"D:\Place For All VS projects\SnakeProjNew\y2mate.com - video game beepSound effect.mp3");
-                var outputFile = new WaveOutEvent();
-                outputFile.Init(audio);
-                outputFile.Play();
                 x.Add(nextX);
                 y.Add(nextY);
                 length++;
@@ -95,9 +90,9 @@ namespace SnakeGame
 
     enum Direction
     {
-        UP, 
-        DOWN, 
-        LEFT, 
+        UP,
+        DOWN,
+        LEFT,
         RIGHT
     }
 }
