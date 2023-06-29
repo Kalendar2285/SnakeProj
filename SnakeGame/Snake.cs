@@ -1,4 +1,5 @@
 ﻿
+using NAudio.Wave;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -48,6 +49,10 @@ namespace SnakeGame
 
             else if (map[nextY, nextX] == '*')
             {
+                var audio = new AudioFileReader(@"D:\Place For All VS projects\SnakeProjNew\y2mate.com - video game beepSound effect.mp3");
+                var outputFile = new WaveOutEvent();
+                outputFile.Init(audio);
+                outputFile.Play();
                 x.Add(nextX);
                 y.Add(nextY);
                 length++;
@@ -81,6 +86,7 @@ namespace SnakeGame
         {
             for (int i = 0; i < length; i++)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.SetCursorPosition(x[i], y[i]);
                 Console.Write('@');
             }

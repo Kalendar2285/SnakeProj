@@ -41,7 +41,7 @@ namespace SnakeGame
 
         internal void SetApples(char[,] map)
         {
-            int positionX = new Random().Next(2, 38);
+            int positionX = new Random().Next(2, 37);
             int positionY = new Random().Next(2, 16);
 
             map[positionY, positionX] = '*';
@@ -56,6 +56,6 @@ namespace SnakeGame
                 if (item == '*') result = false;
             }
             return result;
-        } 
+        }
     }
 }
